@@ -102,7 +102,8 @@ def schedule_emails(due_datetime, recipient_email, subject, name, due_date, due_
         )
     
     schedule_time = due_datetime.time().strftime('%H:%M')
-    schedule.every().day.at(schedule_time).do(job)
+    schedule.every().day.at(schedule_time).do(job)# for sending email everyday at the specified due datetime
+    schedule.every().once.at(schedule_time).do(job)#optional schedule to send emails only once
 
 def process_excel_file(file_path):
     '''Process the excel file and schedule email sending jobs for each row.'''
